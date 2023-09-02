@@ -31,8 +31,8 @@ def load_data():
     #return data
 
     ######33
-    lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
-    #lqas_url = "https://raw.githubusercontent.com/anhambombe/moz/master/MOZ_SIA_LQAS_Assessment.xlsx"
+    #lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
+    lqas_url = "https://raw.githubusercontent.com/anhambombe/moz/master/MOZ_SIA_LQAS_Assessment.xlsx"
 
     data = pd.read_excel(lqas_url, sheet_name="data")
     hh = pd.read_excel(lqas_url, sheet_name="Count_HH")
