@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import openpyxl
+from openpyxl import load_workbook
 
 import time
 
@@ -34,9 +35,21 @@ def load_data():
     #lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
     lqas_url = "https://raw.githubusercontent.com/anhambombe/moz/master/MOZ_SIA_LQAS_Assessment.xlsx"
 
-    data = pd.read_excel(lqas_url, sheet_name="data")
-    hh = pd.read_excel(lqas_url, sheet_name="Count_HH")
-    dfg = pd.merge(data, hh, left_on='_index', right_on='_parent_index', how='left')
+    # Carregar o arquivo Excel usando openpyxl
+    wb = load_workbook(filename=lqas_url, read_only=True)
+    ws = wb['data']
+
+    # Ler os dados do arquivo Excel e criar um DataFrame
+    data = pd.DataFrame(ws.values)
+    data.columns = data.iloc[0]
+    data = data[1:]
+
+    hh = wb['Count_HH']
+    hh_data = pd.DataFrame(hh.values)
+    hh_data.columns = hh_data.iloc[0]
+    hh_data = hh_data[1:]
+
+    dfg = pd.merge(data, hh_data, left_on='_index', right_on='_parent_index', how='left')
     
     #return dfg
     # Carregue seus dados em DataFrames
@@ -119,5 +132,3 @@ resumo.columns = ["Total"]
 
 # Escreve o DataFrame na tela
 st.write(resumo)
-
-
