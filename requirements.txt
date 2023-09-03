@@ -3,5 +3,7 @@ openai
 llama-index
 nltk
 pandas
-openpyxl==3.0.7
-requests
+openpyxl
+streamlit
+fuzzywuzzy
+time
