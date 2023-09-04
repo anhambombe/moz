@@ -106,8 +106,8 @@ option = st.selectbox(
 
 'You selected: ', option
 
-coluna=st.sidebar.selectbox(df["Region"].unique(),
-df["Region"].unique()[0])
+coluna=st.sidebar.selectbox(df["Region"].unique()
+#df["Region"].unique()[0])
 
 grafcoluna=df[df["Region"]==coluna]
 
