@@ -113,7 +113,7 @@ grafcoluna=df[df["Region"]==coluna]
 
 chart_data = df.grafcoluna.value_counts()
 
-st.line_chart(chart_data)
+#st.line_chart(chart_data)
 
 
 
@@ -141,5 +141,6 @@ resumo.columns = ["Total"]
 
 # Escreve o DataFrame na tela
 st.write(resumo)
+st.line_chart(chart_data)
 
 
