@@ -106,7 +106,12 @@ option = st.selectbox(
 
 'You selected: ', option
 
-chart_data = df["Region"].value_counts()
+coluna=st.sidebar.selectbox(df["Region"].unique(),
+df["Region"].unique()[0])
+
+grafcoluna=df[df["Region"]==coluna]
+
+chart_data = df.grafcoluna.value_counts()
 
 st.line_chart(chart_data)
 
@@ -125,6 +130,9 @@ add_selectbox = st.sidebar.selectbox(
     'How would you like to be contacted?',
     ('Email', 'Home phone', 'Mobile phone')
 )
+
+
+
 # Cria um DataFrame com a contagem de valores únicos na coluna "Vacinado"
 resumo = pd.DataFrame(df["Vacinado"].value_counts())
 
