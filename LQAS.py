@@ -22,8 +22,7 @@ for i in range(100):
   time.sleep(0.1)
 
 DATE_COLUMN = 'Date_of_LQAS'
-
-@st.cache_data
+#@st.cache_data
 lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
 
 data=pd.read_excel(lqas_url,
