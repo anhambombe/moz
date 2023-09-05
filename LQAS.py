@@ -37,7 +37,7 @@ def load_data():
     data=pd.read_excel(lqas_url,
                      sheet_name="data")
     hh_data=pd.read_excel(lqas_url,
-                     sheet_name="hh_data")
+                     sheet_name="Count_HH")
     
 
     df = pd.merge(data, hh_data, left_on='_index', right_on='_parent_index', how='left')
