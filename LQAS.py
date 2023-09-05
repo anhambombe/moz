@@ -31,25 +31,16 @@ def load_data():
     #data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
     #return data
 
-    ######33
-    #lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
-    lqas_url = "https://raw.githubusercontent.com/anhambombe/moz/master/MOZ_SIA_LQAS_Assessment.xlsx"
+     # Carregar o arquivo Excel usando openpyxl
+    lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
 
-    # Carregar o arquivo Excel usando openpyxl
-    wb = load_workbook(filename=lqas_url, read_only=True)
-    ws = wb['data']
+    data=pd.read_excel(lqas_url,
+                     sheet_name="data")
+    hh_data=pd.read_excel(lqas_url,
+                     sheet_name="hh_data")
+    
 
-    # Ler os dados do arquivo Excel e criar um DataFrame
-    data = pd.DataFrame(ws.values)
-    data.columns = data.iloc[0]
-    data = data[1:]
-
-    hh = wb['Count_HH']
-    hh_data = pd.DataFrame(hh.values)
-    hh_data.columns = hh_data.iloc[0]
-    hh_data = hh_data[1:]
-
-    dfg = pd.merge(data, hh_data, left_on='_index', right_on='_parent_index', how='left')
+    df = pd.merge(data, hh_data, left_on='_index', right_on='_parent_index', how='left')
     
     #return dfg
     # Carregue seus dados em DataFrames
