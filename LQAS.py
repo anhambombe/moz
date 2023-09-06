@@ -26,9 +26,9 @@ DATE_COLUMN = 'Date_of_LQAS'
 lqas_url = "MOZ_SIA_LQAS_Assessment.xlsx"
 
 data=pd.read_excel(lqas_url,
-                 sheet_name="data")
+                 sheet_name="data",engine='openpyxl')
 hh_data=pd.read_excel(lqas_url,
-                 sheet_name="Count_HH")
+                 sheet_name="Count_HH",engine='openpyxl')
 
 
 df = pd.merge(data, hh_data, left_on='_index', right_on='_parent_index', how='left')
